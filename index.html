@@ -3,278 +3,197 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,nofollow,noarchive">
-  <meta name="theme-color" content="#f6f7fb">
+  <meta name="theme-color" content="#ffffff">
   <meta name="description" content="CompAnyPoint is a training-free, zero-shot point cloud completion framework that stabilizes 3D generative sampling through spatial and dynamic control.">
   <meta property="og:title" content="CompAnyPoint — Zero-Shot Point Cloud Completion">
   <meta property="og:description" content="Stabilizing zero-shot point cloud completion via spatial and dynamic sampling control.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/page-01-image-1.png">
   <title>CompAnyPoint — Zero-Shot Point Cloud Completion</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%236c5ce7'/%3E%3Cpath d='M32 10 51 21v22L32 54 13 43V21zm0 0v22m19-11L32 32 13 21m19 11v22' fill='none' stroke='white' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23245a9b'/%3E%3Cpath d='M32 10 51 21v22L32 54 13 43V21zm0 0v22m19-11L32 32 13 21m19 11v22' fill='none' stroke='white' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="nav-wrap">
-      <a class="brand" href="#top" aria-label="CompAnyPoint home">
-        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="m24 4 17 10v20L24 44 7 34V14zm0 0v20m17-10L24 24 7 14m17 10v20"/></svg>
-        <span>CompAnyPoint</span>
-      </a>
-      <nav class="desktop-nav" aria-label="Main navigation">
-        <a href="#overview">Overview</a>
-        <a href="#method">Method</a>
-        <a href="#results">Results</a>
-        <a href="#ablation">Ablation</a>
-      </nav>
-      <a class="nav-github" href="https://github.com/HenryHoou/Companypont" target="_blank" rel="noopener noreferrer" aria-label="CompAnyPoint on GitHub">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2.23c-3.22.7-3.9-1.37-3.9-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.69 1.25 3.34.95.1-.74.4-1.25.72-1.53-2.57-.3-5.27-1.29-5.27-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.16 1.18a10.98 10.98 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.82 1.19 3.08 0 4.4-2.71 5.37-5.29 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
-        <span>GitHub</span>
-      </a>
+  <header class="hero" id="top">
+    <div class="container hero-inner">
+      <h1 class="publication-title">
+        <svg class="title-logo" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6 54 18v26L32 56 10 44V18zm0 0v26m22-14L32 32 10 18m22 14v24"/></svg>
+        <span class="brand-gradient">CompAnyPoint</span>
+      </h1>
+      <h2 class="publication-subtitle"><strong>Stabilizing Zero-Shot Point Cloud Completion via Spatial and Dynamic Sampling Control</strong></h2>
+      <div class="publication-links">
+        <a class="button button-dark" href="#method">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11a3 3 0 0 1 3 3v15a3 3 0 0 0-3-3H4zm16 0A2.5 2.5 0 0 0 17.5 3H14v18a3 3 0 0 1 3-3h3z"/></svg>
+          <span>Method</span>
+        </a>
+        <a class="button button-light" href="https://github.com/HenryHoou/Companypont" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2.23c-3.22.7-3.9-1.37-3.9-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.69 1.25 3.34.95.1-.74.4-1.25.72-1.53-2.57-.3-5.27-1.29-5.27-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.16 1.18a10.98 10.98 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.82 1.19 3.08 0 4.4-2.71 5.37-5.29 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
+          <span>Code</span>
+        </a>
+      </div>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero section-shell" id="top">
-      <div class="hero-copy reveal">
-        <div class="eyebrow"><span class="pulse-dot"></span> Training-free · Zero-shot · Generalizable</div>
-        <h1><span>CompAnyPoint</span></h1>
-        <p class="hero-subtitle">Stabilizing Zero-Shot Point Cloud Completion via <strong>Spatial</strong> and <strong>Dynamic Sampling Control</strong></p>
-        <p class="hero-description">Complete any partial observation with frozen 3D generative priors. Spatial guidance controls <em>where</em> geometry emerges; dynamic sampling controls <em>how</em> it evolves.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#method">Explore the method <span aria-hidden="true">→</span></a>
-          <a class="button button-secondary" href="#results">View results</a>
+    <section class="section teaser-section" id="overview">
+      <div class="container center">
+        <figure class="paper-figure">
+          <button class="image-zoom" type="button" data-image="assets/page-01-image-1.png" aria-label="Enlarge robustness results">
+            <img src="assets/page-01-image-1.png" alt="CompAnyPoint outperforms LaS-Comp across semantic part, random crop, single scan, sparse, noisy, and monocular depth inputs" width="2034" height="1384">
+          </button>
+        </figure>
+        <h2 class="section-description"><span class="brand-gradient">CompAnyPoint</span> achieves robust zero-shot completion across diverse partial observations, including semantic parts, random crops, single scans, sparse and noisy points, and monocular depth.</h2>
+      </div>
+    </section>
+
+    <section class="section" id="novelty">
+      <div class="container">
+        <h2 class="section-title center">Novelty</h2>
+        <figure class="paper-figure">
+          <button class="image-zoom" type="button" data-image="assets/page-02-image-1.png" aria-label="Enlarge sampling stability comparison">
+            <img src="assets/page-02-image-1.png" alt="LaS-Comp is sensitive to random seeds and sparse noisy inputs, while CompAnyPoint produces stable completions and smoother trajectories" width="1489" height="486" loading="lazy">
+          </button>
+        </figure>
+        <h3 class="section-description center">We stabilize frozen 3D generative priors for irregular real-world inputs by jointly constraining <strong>where new geometry emerges</strong> and <strong>how the sampling trajectory evolves</strong>, without additional training or parameter updates.</h3>
+        <div class="fact-row" aria-label="Key facts">
+          <div><strong>0</strong><span>additional training</span></div>
+          <div><strong>75 steps</strong><span>vs. 100-step baseline</span></div>
+          <div><strong>~25%</strong><span>sampling efficiency gain</span></div>
+          <div><strong>5 datasets</strong><span>completion benchmarks</span></div>
         </div>
-        <p class="submission-label">Project page · Anonymous submission</p>
-      </div>
-      <div class="hero-orbit" aria-hidden="true">
-        <div class="orbit-ring orbit-one"></div>
-        <div class="orbit-ring orbit-two"></div>
-        <div class="point-cloud" id="point-cloud"></div>
-        <div class="hero-cube">
-          <svg viewBox="0 0 180 180"><path d="m90 16 62 36v72l-62 36-62-36V52zm0 0v72m62-36-62 36-62-36m62 36v72"/></svg>
-        </div>
       </div>
     </section>
 
-    <section class="metric-band section-shell reveal" aria-label="Key facts">
-      <div class="metric-item"><strong>0</strong><span>additional training</span></div>
-      <div class="metric-item"><strong>75<span class="metric-unit"> steps</span></strong><span>vs. 100-step baseline</span></div>
-      <div class="metric-item"><strong>~25<span class="metric-unit">%</span></strong><span>sampling efficiency gain</span></div>
-      <div class="metric-item"><strong>5</strong><span>evaluation datasets</span></div>
-    </section>
-
-    <section class="section-shell section-block" id="overview">
-      <div class="section-heading reveal">
-        <span class="section-kicker">One framework. Any partiality.</span>
-        <h2>From partial points to coherent shapes.</h2>
-        <p>Semantic parts, random crops, single scans, sparse or noisy points, and monocular depth—all handled without completion-specific training.</p>
-      </div>
-      <figure class="image-card reveal">
-        <button class="image-zoom" type="button" data-image="assets/page-01-image-1.png" aria-label="Enlarge robustness results">
-          <img src="assets/page-01-image-1.png" alt="CompAnyPoint outperforms LaS-Comp across semantic part, random crop, single scan, sparse, noisy, and monocular depth inputs" width="2034" height="1384">
-        </button>
-        <figcaption><span>Figure 1</span> Robust completion across diverse partial inputs and monocular-depth-driven multimodal completion.</figcaption>
-      </figure>
-    </section>
-
-    <section class="section-shell split-section section-block">
-      <div class="abstract-copy reveal">
-        <span class="section-kicker">The challenge</span>
-        <h2>Generative priors need a stable trajectory.</h2>
-        <p>Pretrained 3D generative models offer powerful shape priors, but unconstrained latent noise and uniform sampling schedules expand the solution space excessively. The result is unstable completion, geometric artifacts, and poor fidelity to observations.</p>
-        <p>CompAnyPoint instead guides exploration from observed structures, preserves reliable geometry through soft replacement, and concentrates computation on the stages where geometry actually forms.</p>
-      </div>
-      <div class="feature-stack reveal">
-        <article class="mini-feature">
-          <span class="feature-number">01</span>
-          <div><h3>Guide spatial growth</h3><p>Start exploration from observation-derived supports rather than arbitrary empty space.</p></div>
-        </article>
-        <article class="mini-feature">
-          <span class="feature-number">02</span>
-          <div><h3>Preserve what is known</h3><p>Fuse generated geometry with reliable observations without rigid hard replacement.</p></div>
-        </article>
-        <article class="mini-feature">
-          <span class="feature-number">03</span>
-          <div><h3>Spend steps where they matter</h3><p>Reallocate evaluations toward geometry-forming stages and adapt decoder projection.</p></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section-shell section-block stability-section">
-      <figure class="image-card reveal">
-        <button class="image-zoom" type="button" data-image="assets/page-02-image-1.png" aria-label="Enlarge sampling stability comparison">
-          <img src="assets/page-02-image-1.png" alt="LaS-Comp is sensitive to random seeds and sparse noisy inputs, while CompAnyPoint produces stable completions and smoother trajectories" width="1489" height="486" loading="lazy">
-        </button>
-        <figcaption><span>Figure 2</span> More consistent completions across seeds and input variations, with smoother sampling trajectories.</figcaption>
-      </figure>
-    </section>
-
-    <section class="method-section" id="method">
-      <div class="section-shell section-block">
-        <div class="section-heading reveal">
-          <span class="section-kicker">Method</span>
-          <h2>Control space. Control time.</h2>
-          <p>Two coupled mechanisms stabilize a frozen pretrained generator throughout the entire sampling process.</p>
-        </div>
-        <figure class="image-card method-card reveal">
+    <section class="section" id="method">
+      <div class="container">
+        <h2 class="section-title center">CompAnyPoint</h2>
+        <figure class="paper-figure">
           <button class="image-zoom" type="button" data-image="assets/page-03-image-1.png" aria-label="Enlarge CompAnyPoint framework">
             <img src="assets/page-03-image-1.png" alt="CompAnyPoint framework with Latent-Space Geo-Prompt and Dynamics Reallocation Sampling around a frozen generator" width="2719" height="823" loading="lazy">
           </button>
-          <figcaption><span>Figure 3</span> Overall framework. Snowflakes indicate frozen pretrained components.</figcaption>
         </figure>
-        <div class="method-grid">
-          <article class="method-detail reveal">
-            <div class="method-icon spatial-icon" aria-hidden="true"><span></span><span></span><span></span></div>
-            <span class="method-label">Spatial control</span>
-            <h3>Latent-Space Geo-Prompt</h3>
-            <p>Controls where new geometry emerges by coupling a noisy exploration branch with a clean fidelity branch.</p>
-            <ul class="check-list">
-              <li><strong>Spatial growth</strong> expands from observed latent supports.</li>
-              <li><strong>Best-view control</strong> optionally directs monocular completion.</li>
-              <li><strong>Soft replacement</strong> maintains observation fidelity and continuity.</li>
-            </ul>
-          </article>
-          <article class="method-detail reveal">
-            <div class="method-icon dynamic-icon" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-            <span class="method-label">Dynamic control</span>
-            <h3>Dynamics Reallocation Sampling</h3>
-            <p>Controls how sampling evolves by matching computation and projection strength to geometric dynamics.</p>
-            <ul class="check-list">
-              <li><strong>Timestep reallocation</strong> focuses on middle-stage structure formation.</li>
-              <li><strong>Adaptive projection</strong> shifts from loose exploration to tight consolidation.</li>
-              <li><strong>Fewer evaluations</strong> improve quality and efficiency together.</li>
-            </ul>
-          </article>
+        <h3 class="section-description center">CompAnyPoint stabilizes the sampling process of a pretrained 3D generative model through two complementary controls:</h3>
+        <div class="method-explanation">
+          <p><strong>(a) Latent-Space Geo-Prompt (LSG)</strong> guides stochastic exploration from observation-derived spatial supports. Spatial growth encourages geometry to expand from reliable observations, optional best-view control directs monocular completion, and soft replacement preserves observed geometry while maintaining structural continuity.</p>
+          <p><strong>(b) Dynamics Reallocation Sampling (DRS)</strong> adapts the sampling process to non-uniform geometric evolution. Generator-side timestep reallocation concentrates evaluations on geometry-forming stages, while decoder-side adaptive projection shifts from permissive exploration to strict occupancy consolidation.</p>
         </div>
       </div>
     </section>
 
-    <section class="section-shell section-block" id="results">
-      <div class="section-heading reveal">
-        <span class="section-kicker">Experiments</span>
-        <h2>Consistent gains across observations.</h2>
-        <p>Evaluated on Omni-Comp, Redwood, Synthetic, ScanNet, and KITTI against supervised and generative-prior-based completion methods.</p>
-      </div>
-      <div class="result-tabs reveal" role="tablist" aria-label="Qualitative results">
-        <button id="tab-omni" class="tab-button active" type="button" role="tab" aria-selected="true" aria-controls="panel-omni" data-tab="omni">Omni-Comp</button>
-        <button id="tab-real" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-real" data-tab="real" tabindex="-1">Real-world RGB-D</button>
-        <button id="tab-sparse" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-sparse" data-tab="sparse" tabindex="-1">Sparse LiDAR</button>
-      </div>
-      <div class="tab-panels reveal">
-        <div id="panel-omni" role="tabpanel" aria-labelledby="tab-omni" data-panel="omni">
-          <figure class="image-card flat-card">
-            <button class="image-zoom" type="button" data-image="assets/page-06-image-1.jpg" aria-label="Enlarge Omni-Comp comparisons">
-              <img src="assets/page-06-image-1.jpg" alt="Qualitative comparisons on Omni-Comp under text-conditioned and unconditional settings" width="3000" height="1336" loading="lazy">
-            </button>
-            <figcaption><span>Figure 5</span> CompAnyPoint preserves observations and generates coherent shapes with or without text conditioning.</figcaption>
-          </figure>
+    <section class="section" id="results">
+      <div class="container">
+        <h2 class="section-title center">Comparisons</h2>
+        <div class="result-tabs center" role="tablist" aria-label="Qualitative results">
+          <button id="tab-omni" class="tab-button active" type="button" role="tab" aria-selected="true" aria-controls="panel-omni" data-tab="omni">Omni-Comp</button>
+          <button id="tab-real" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-real" data-tab="real" tabindex="-1">Real-world RGB-D</button>
+          <button id="tab-sparse" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-sparse" data-tab="sparse" tabindex="-1">Sparse LiDAR</button>
         </div>
-        <div id="panel-real" role="tabpanel" aria-labelledby="tab-real" data-panel="real" hidden>
-          <figure class="image-card flat-card">
-            <button class="image-zoom" type="button" data-image="assets/page-06-image-2.png" aria-label="Enlarge real-world RGB-D comparisons">
-              <img src="assets/page-06-image-2.png" alt="CompAnyPoint recovers indoor chairs and outdoor vehicles from sparse and noisy RGB-D observations" width="1743" height="558" loading="lazy">
-            </button>
-            <figcaption><span>Figure 6</span> Sparse outdoor LiDAR and noisy indoor RGB-D completion.</figcaption>
-          </figure>
+        <div class="tab-panels">
+          <div id="panel-omni" role="tabpanel" aria-labelledby="tab-omni" data-panel="omni">
+            <figure class="paper-figure">
+              <button class="image-zoom" type="button" data-image="assets/page-06-image-1.jpg" aria-label="Enlarge Omni-Comp comparisons">
+                <img src="assets/page-06-image-1.jpg" alt="Qualitative comparisons on Omni-Comp under text-conditioned and unconditional settings" width="3000" height="1336" loading="lazy">
+              </button>
+            </figure>
+            <h3 class="section-description center">CompAnyPoint preserves reliable observations and generates coherent complete shapes across diverse partiality patterns, with or without text conditioning.</h3>
+          </div>
+          <div id="panel-real" role="tabpanel" aria-labelledby="tab-real" data-panel="real" hidden>
+            <figure class="paper-figure">
+              <button class="image-zoom" type="button" data-image="assets/page-06-image-2.png" aria-label="Enlarge real-world RGB-D comparisons">
+                <img src="assets/page-06-image-2.png" alt="CompAnyPoint recovers indoor chairs and outdoor vehicles from sparse and noisy RGB-D observations" width="1743" height="558" loading="lazy">
+              </button>
+            </figure>
+            <h3 class="section-description center">The framework recovers missing structures while preserving observed geometry in sparse outdoor LiDAR and noisy indoor RGB-D observations.</h3>
+          </div>
+          <div id="panel-sparse" role="tabpanel" aria-labelledby="tab-sparse" data-panel="sparse" hidden>
+            <figure class="paper-figure">
+              <button class="image-zoom" type="button" data-image="assets/page-13-image-1.png" aria-label="Enlarge sparse KITTI results">
+                <img src="assets/page-13-image-1.png" alt="CompAnyPoint completes cars and pedestrians from highly sparse KITTI LiDAR points with synchronized RGB images" width="2869" height="826" loading="lazy">
+              </button>
+            </figure>
+            <h3 class="section-description center">Paired image cues and sparse LiDAR constraints enable multimodal completion for cars and pedestrians in real outdoor scenes.</h3>
+          </div>
         </div>
-        <div id="panel-sparse" role="tabpanel" aria-labelledby="tab-sparse" data-panel="sparse" hidden>
-          <figure class="image-card flat-card">
-            <button class="image-zoom" type="button" data-image="assets/page-13-image-1.png" aria-label="Enlarge sparse KITTI results">
-              <img src="assets/page-13-image-1.png" alt="CompAnyPoint completes cars and pedestrians from highly sparse KITTI LiDAR points with synchronized RGB images" width="2869" height="826" loading="lazy">
-            </button>
-            <figcaption><span>Figure 8</span> Extremely sparse KITTI LiDAR instances completed with paired image cues.</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <div class="improvement-grid reveal">
-        <article><strong>26.0%</strong><span>lower mean CD</span><p>Single scan · text-conditioned</p></article>
-        <article><strong>24.3%</strong><span>lower mean CD</span><p>Random crop · text-conditioned</p></article>
-        <article><strong>22.1%</strong><span>lower mean CD</span><p>Semantic part · text-conditioned</p></article>
-        <article><strong>70%</strong><span>lower seed variance</span><p>Average standard deviation vs. LaS-Comp</p></article>
-      </div>
-
-      <div class="table-card reveal">
-        <div class="table-heading"><div><span class="section-kicker">Omni-Comp</span><h3>Completion accuracy across partiality patterns</h3></div><span class="metric-note">CD / EMD × 10² ↓</span></div>
-        <div class="table-scroll" tabindex="0" aria-label="Scrollable Omni-Comp results table">
-          <table>
-            <thead><tr><th>Setting</th><th>Method</th><th colspan="2">Single scan</th><th colspan="2">Random crop</th><th colspan="2">Semantic part</th></tr><tr><th></th><th></th><th>CD</th><th>EMD</th><th>CD</th><th>EMD</th><th>CD</th><th>EMD</th></tr></thead>
-            <tbody>
-              <tr><td rowspan="2">Text-conditioned</td><td>LaS-Comp</td><td>2.19</td><td>3.13</td><td>2.59</td><td>3.34</td><td>3.40</td><td>3.63</td></tr>
-              <tr class="ours-row"><td>CompAnyPoint</td><td>1.62</td><td>2.53</td><td>1.96</td><td>2.88</td><td>2.65</td><td>3.02</td></tr>
-              <tr><td rowspan="2">Unconditional</td><td>LaS-Comp</td><td>2.54</td><td>3.97</td><td>2.37</td><td>3.84</td><td>3.32</td><td>4.69</td></tr>
-              <tr class="ours-row"><td>CompAnyPoint</td><td>1.98</td><td>2.84</td><td>1.61</td><td>2.58</td><td>2.74</td><td>3.06</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="table-caption">Mean values from Table 1. Lower is better. CompAnyPoint achieves the best mean CD/EMD across all reported patterns in both settings.</p>
-      </div>
-
-      <div class="table-card reveal">
-        <div class="table-heading"><div><span class="section-kicker">ScanNet & KITTI</span><h3>Generalization to real sensor observations</h3></div><span class="metric-note">UCD × 10⁴ / MMD × 10² ↓</span></div>
-        <div class="table-scroll" tabindex="0" aria-label="Scrollable real-world results table">
-          <table>
-            <thead><tr><th>Method</th><th>ScanNet Chair</th><th>ScanNet Table</th><th>KITTI Car</th><th>KITTI Pedestrian</th></tr></thead>
-            <tbody>
-              <tr><td>LaS-Comp</td><td>0.93 / 0.45</td><td>1.01 / 0.46</td><td>1.53 / 0.43</td><td>1.35 / 0.54</td></tr>
-              <tr class="ours-row"><td>CompAnyPoint</td><td>0.69 / 0.27</td><td>0.76 / 0.28</td><td>1.11 / 0.21</td><td>1.26 / 0.51</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="table-caption">UCD measures observation fidelity; MMD assesses shape plausibility. Values from Table 3.</p>
       </div>
     </section>
 
-    <section class="ablation-section" id="ablation">
-      <div class="section-shell section-block">
-        <div class="section-heading reveal">
-          <span class="section-kicker">Ablation & transferability</span>
-          <h2>Better geometry, fewer steps.</h2>
-          <p>The complete sampling controller improves completion quality while reducing average inference time from 23.01 s to 17.00 s.</p>
+    <section class="section" id="quantitative">
+      <div class="container">
+        <h2 class="section-title center">Quantitative Results</h2>
+        <div class="improvement-row">
+          <div><strong>26.0%</strong><span>lower mean CD · Single scan</span></div>
+          <div><strong>24.3%</strong><span>lower mean CD · Random crop</span></div>
+          <div><strong>22.1%</strong><span>lower mean CD · Semantic part</span></div>
+          <div><strong>70%</strong><span>lower average seed variance</span></div>
         </div>
-        <div class="ablation-layout">
-          <div class="efficiency-card reveal">
-            <span class="efficiency-label">Average inference time</span>
-            <div class="time-comparison"><div><span>Full LSG, fixed schedule</span><strong>23.01<small>s</small></strong></div><span class="time-arrow">→</span><div class="time-highlight"><span>Complete CompAnyPoint</span><strong>17.00<small>s</small></strong></div></div>
-            <div class="efficiency-bar" aria-label="26.1 percent reduction in inference time"><span></span></div>
-            <p><strong>26.1% less time</strong> with Redwood CD / EMD improving from 1.37 / 1.81 to 1.28 / 1.69.</p>
+        <div class="table-block">
+          <div class="table-heading"><h3>Omni-Comp</h3><span>CD / EMD × 10² ↓</span></div>
+          <div class="table-scroll" tabindex="0" aria-label="Scrollable Omni-Comp results table">
+            <table>
+              <thead><tr><th>Setting</th><th>Method</th><th colspan="2">Single scan</th><th colspan="2">Random crop</th><th colspan="2">Semantic part</th></tr><tr><th></th><th></th><th>CD</th><th>EMD</th><th>CD</th><th>EMD</th><th>CD</th><th>EMD</th></tr></thead>
+              <tbody>
+                <tr><td rowspan="2">Text-conditioned</td><td>LaS-Comp</td><td>2.19</td><td>3.13</td><td>2.59</td><td>3.34</td><td>3.40</td><td>3.63</td></tr>
+                <tr class="ours-row"><td>CompAnyPoint</td><td>1.62</td><td>2.53</td><td>1.96</td><td>2.88</td><td>2.65</td><td>3.02</td></tr>
+                <tr><td rowspan="2">Unconditional</td><td>LaS-Comp</td><td>2.54</td><td>3.97</td><td>2.37</td><td>3.84</td><td>3.32</td><td>4.69</td></tr>
+                <tr class="ours-row"><td>CompAnyPoint</td><td>1.98</td><td>2.84</td><td>1.61</td><td>2.58</td><td>2.74</td><td>3.06</td></tr>
+              </tbody>
+            </table>
           </div>
-          <div class="backbone-card reveal">
-            <span class="section-kicker">Frozen backbone transfer</span>
-            <h3>One strategy, multiple 3D priors.</h3>
-            <div class="backbone-list">
-              <div><span>Direct3D-S2</span><strong>1.76 → 1.45</strong><small>Redwood CD</small></div>
-              <div><span>TRELLIS.2</span><strong>1.82 → 1.42</strong><small>Redwood CD</small></div>
-              <div><span>SAM 3D</span><strong>1.83 → 1.36</strong><small>Redwood CD</small></div>
-            </div>
-            <p>Consistent gains without parameter updates or completion-specific training.</p>
+          <p class="table-caption">Mean values from Table 1. Lower is better. CompAnyPoint achieves the best mean CD/EMD across all reported patterns in both settings.</p>
+        </div>
+        <div class="table-block">
+          <div class="table-heading"><h3>ScanNet & KITTI</h3><span>UCD × 10⁴ / MMD × 10² ↓</span></div>
+          <div class="table-scroll" tabindex="0" aria-label="Scrollable real-world results table">
+            <table>
+              <thead><tr><th>Method</th><th>ScanNet Chair</th><th>ScanNet Table</th><th>KITTI Car</th><th>KITTI Pedestrian</th></tr></thead>
+              <tbody>
+                <tr><td>LaS-Comp</td><td>0.93 / 0.45</td><td>1.01 / 0.46</td><td>1.53 / 0.43</td><td>1.35 / 0.54</td></tr>
+                <tr class="ours-row"><td>CompAnyPoint</td><td>0.69 / 0.27</td><td>0.76 / 0.28</td><td>1.11 / 0.21</td><td>1.26 / 0.51</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-caption">UCD measures observation fidelity; MMD assesses shape plausibility. Values from Table 3.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ablation">
+      <div class="container">
+        <h2 class="section-title center">Ablation & Transferability</h2>
+        <h3 class="section-description center">The complete sampling controller improves completion quality while reducing average inference time from <strong>23.01 s</strong> to <strong>17.00 s</strong>.</h3>
+        <div class="ablation-grid">
+          <div class="ablation-summary">
+            <h3>Better geometry, fewer steps</h3>
+            <div class="time-values"><span>23.01 s</span><span aria-hidden="true">→</span><strong>17.00 s</strong></div>
+            <div class="time-track" aria-label="26.1 percent reduction in inference time"><span></span></div>
+            <p><strong>26.1% less inference time</strong>, with Redwood CD / EMD improving from 1.37 / 1.81 to 1.28 / 1.69.</p>
+          </div>
+          <div class="backbone-summary">
+            <h3>Transfer across frozen 3D priors</h3>
+            <div class="backbone-row"><span>Direct3D-S2</span><strong>1.76 → 1.45</strong><small>Redwood CD</small></div>
+            <div class="backbone-row"><span>TRELLIS.2</span><strong>1.82 → 1.42</strong><small>Redwood CD</small></div>
+            <div class="backbone-row"><span>SAM 3D</span><strong>1.83 → 1.36</strong><small>Redwood CD</small></div>
           </div>
         </div>
-        <figure class="image-card dynamics-card reveal">
+        <figure class="paper-figure dynamics-figure">
           <button class="image-zoom" type="button" data-image="assets/page-16-image-1.png" aria-label="Enlarge geometric dynamics analysis">
             <img src="assets/page-16-image-1.png" alt="Analysis of decoded voxel count, per-step Chamfer distance, adaptive decoder threshold, and timestep reallocation" width="2232" height="384" loading="lazy">
           </button>
-          <figcaption><span>Figure 13</span> Geometric dynamics motivate adaptive projection and middle-stage timestep reallocation.</figcaption>
         </figure>
+        <p class="figure-caption center">Geometric dynamics motivate adaptive decoder projection and middle-stage timestep reallocation.</p>
       </div>
-    </section>
-
-    <section class="closing-section section-shell reveal">
-      <div>
-        <span class="section-kicker">CompAnyPoint</span>
-        <h2>Complete anything.<br>Keep what matters.</h2>
-      </div>
-      <a class="button button-primary" href="#top">Back to top <span aria-hidden="true">↑</span></a>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="section-shell footer-inner">
-      <p>CompAnyPoint · Stabilizing zero-shot point cloud completion via spatial and dynamic sampling control.</p>
-      <a href="https://github.com/HenryHoou/Companypont" target="_blank" rel="noopener noreferrer">GitHub repository <span aria-hidden="true">↗</span></a>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p><span class="brand-gradient">CompAnyPoint</span> · Zero-shot point cloud completion with spatial and dynamic sampling control.</p>
+      <a href="https://github.com/HenryHoou/Companypont" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     </div>
   </footer>
 
